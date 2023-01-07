@@ -1,27 +1,29 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "C:\\Windows\\System32;
+        C:\Users\nicop\AppData\Local\Programs\Python\Python39;
+        C:\Program Files\Docker\Docker\resources\bin"
+    }
+
     stages {
         stage('Building') {
             steps {
-                sh 'pip --version'
+                git branch: 'main', url: 'https://github.com/NikoRz/tp3mlops.git'
             }
         }
         stage('Testing') {
             steps {
-                
-                sh 'python -m unitest'
+                bat 'python -m pip install Flask'
+                bat 'python test_main.py'
             }
         }
         stage('Deploying') {
             steps {
-                sh 'docker build -t jenkins .'
-                sh 'docker run -d -p 5000:5000 jenkins'
+                bat 'docker build -t jenkins_app .'
+                bat 'docker run -d jenkins_app'
             }
         }
-    }
-
-    triggers {
-        githubPush()
     }
 }
