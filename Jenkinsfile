@@ -2,9 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH = "C:\\Windows\\System32;
-        C:\\Users\\nicop\\AppData\\Local\\Programs\\Python\\Python39;
-        C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        PATH = "C:\\Windows\\System32;C:\\Users\\nicop\\AppData\\Local\\Programs\\Python\\Python39;C:\\Program Files\\Docker\\Docker\\resources\\bin"
     }
 
     stages {
